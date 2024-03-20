@@ -4,7 +4,7 @@ import React from "react";
 const MainScreen = () => {
   return (
     <SafeAreaView>
-      <Text></Text>
+      <Text>Todo App</Text>
     </SafeAreaView>
   );
 };
