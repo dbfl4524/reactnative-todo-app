@@ -1,22 +1,22 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import CheckboxUnchecked from "../assets/checkbox-unchecked.svg";
+import CheckboxUnChecked from "../assets/checkbox-unchecked.svg";
 import CheckboxChecked from "../assets/checkbox-checked.svg";
 import DeleteIcon from "../assets/delete.svg";
-import { deleteTodo } from "../redux/slices/todoSlice";
 import { useDispatch } from "react-redux";
+import { deleteTodo, updateTodo } from "../redux/slices/todoSlice";
 
 const TodoItem = (props) => {
   const dispatch = useDispatch();
   return (
     <View style={styles.itemContainer}>
       <Pressable
-        hitSlop={10}
         style={styles.itemCheckbox}
+        hitSlop={10}
         onPress={() => dispatch(updateTodo(props.id))}
       >
         {props.state === "todo" ? (
-          <CheckboxUnchecked />
+          <CheckboxUnChecked />
         ) : (
           <CheckboxChecked style={styles.itemCheckboxCheckedIcon} />
         )}
@@ -24,7 +24,7 @@ const TodoItem = (props) => {
       <Text
         style={[
           styles.itemText,
-          props.state === "done" && styles.itemTextChecked,
+          props.state === "done" ? styles.itemTextChecked : "",
         ]}
       >
         {props.text}
@@ -32,10 +32,10 @@ const TodoItem = (props) => {
       <Pressable
         style={[
           styles.deleteButton,
-          props.state === "done" && styles.deleteButtonDone,
+          props.state === "done" ? styles.deleteButtonDone : "",
         ]}
-        onPress={() => dispatch(deleteTodo(props.id))}
         hitSlop={10}
+        onPress={() => dispatch(deleteTodo(props.id))}
       >
         <DeleteIcon />
       </Pressable>

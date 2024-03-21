@@ -20,12 +20,12 @@ const MainScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={"default"} />
-      <Text style={styles.pageTitle}>Todo App</Text>
+      <Text style={styles.pageTitle}>ToDo App</Text>
       <View style={styles.listView}>
         <Text style={styles.listTitle}>할 일</Text>
         {todoTasks.length !== 0 ? (
           <FlatList
-            date={todoTasks}
+            data={todoTasks}
             renderItem={({ item }) => <TodoItem {...item} />}
             keyExtractor={(item) => item.id}
           />
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? 20 : 0,
-    backgroundColor: "#f7f0fa",
+    backgroundColor: "#f7f8fa",
   },
   pageTitle: {
     marginBottom: 35,
